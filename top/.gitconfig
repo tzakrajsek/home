@@ -1,15 +1,32 @@
 [user]
-	name = Brian Kelley
-	email = brian.kelley@gmail.com
-[color]
-	ui = auto
-[alias]
-	unstage = reset HEAD --
-	last = log -1 HEAD
-	st = status
-	co = checkout
-[push]
-	default = simple
+    name = Tom Zakrajsek
+	email = tomz@codeaurora.org
 
-[branch]
-	autosetuprebase = always
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
+
+[core]
+    excludesfile = /home/tomz/.gitignore_global
+    deltaBaseCacheLimit = 2G
+
+[http]
+    sslVerify = false
+
+[alias]
+    co = checkout
+    ci = commit
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    lol = log --oneline --graph --decorate
+    st = status -uno
+    last = log -1 HEAD
+
+[diff]
+    ignoreSubmodules = all
+
+[push]
+    default = simple
