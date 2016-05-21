@@ -60,7 +60,7 @@ if [ -z "$BASHRC_ONCE" ] ; then
         if [ -d "$P" ] ; then PATH="$P:$PATH" ; fi
     done
 
-    if [ "${OSTYPE:0:6}" = darwin ]; then
+    if [ "${OSTYPE:0:6}" = "darwin" ]; then
         export MANPATH="/opt/local/share/man:$MANPATH"
         myls='gls'
     elif [ "$OSTYPE" = "cygwin" ]; then
@@ -112,11 +112,11 @@ if [ -z "$PS1" ] ; then
    return
 fi
 
-PS1='\w] '
-
-if [ -n "$SSH_CLIENT" ] ; then
-  PS1='['"$HOSTNAME"'] \w: '
-fi
+# PS1='\w] '
+#
+# if [ -n "$SSH_CLIENT" ] ; then
+#   PS1='['"$HOSTNAME"'] \w: '
+# fi
 
 if [ "$OSTYPE" = "cygwin" ]; then
   # Cygwin EDITOR: depends on SSH and emacs shell
@@ -126,8 +126,19 @@ if [ "$OSTYPE" = "cygwin" ]; then
     fi
     alias emacs="$EDITOR"
   fi
-  export P4EDITOR="$EDITOR"
+elif [ "${OSTYPE:0:6}" = "darwin" ]; then
+    alias emacs='emacs_osx'
+elif [ "${OSTYPE:0:5}" = "linux" ]; then
+    alias emacs='emacs_linux'
 fi
+
+emacs_osx() {
+    (/Applications/Emacs.app/Contents/MacOS/Emacs "$@" &)
+}
+
+emacs_linux() {
+    (nohup /usr/bin/emacs $@ 1>/dev/null 2>/dev/null &)
+}
 
 # recycle
 re() {
@@ -740,12 +751,6 @@ function tmacs()
     #(/Applications/Emacs.app/Contents/MacOS/Emacs "$@" &);
     unset DISPLAY
     /usr/bin/emacs $@
-}
-
-function emacs()
-{
-    #(/Applications/Emacs.app/Contents/MacOS/Emacs "$@" &);
-    (nohup /usr/bin/emacs $@ 1>/dev/null 2>/dev/null &)
 }
 
 function builds() {
