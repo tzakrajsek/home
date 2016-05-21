@@ -66,7 +66,7 @@ endef
 define ///make.min
 $(call ^require,core)
 top := top
-linked-dirs := .emacs.d .config/git
+linked-dirs := .emacs.d .vim .config/git
 vec-relpath = $(if $(and $1,$(call ~eq,$(call ^u,$(word 1,$1)),$(call ^u,$(word 1,$2)))),$(call vec-relpath,$(wordlist 2,99999999,$1),$(wordlist 2,99999999,$2)),$(call ~append,$(foreach x&,$1,$(call ^d,..)),$2))
 relpath = $(call ~concat-vec,$(call vec-relpath,$(call ~split,/,$(abspath $1)),$(call ~split,/,$(abspath $2))),/)
 find-files = $(foreach name,$1,$(call ^Y,$(wildcard $(name)/.* $(name)/*),,,,,,,,,$$(if $$1,$$(call find-files,$$(filter-out %/.. %/.,$$1)),$$(name))))
