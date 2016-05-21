@@ -44,26 +44,29 @@ if [ -z "$BASHRC_ONCE" ] ; then
         . /etc/bashrc
     fi
 
+    # Conditionally add directories to path
+    # It's ok to add os specific ones since missing ones are bypassed.
+
+    for P in \
+        ~/adt-bundle-mac/sdk/platform-tools \
+        ~/git/depot_tools \
+        /usr/local/bin \
+        $HOME/local/bin \
+        $HOME/bin \
+        $HOME/bin/osx \
+        /opt/local/sbin \
+        /opt/local/bin
+    do
+        if [ -d "$P" ] ; then PATH="$P:$PATH" ; fi
+    done
+
     if [ "${OSTYPE:0:6}" = darwin ]; then
         export MANPATH="/opt/local/share/man:$MANPATH"
-        for P in ~/adt-bundle-mac/sdk/platform-tools \
-                 ~/git/depot_tools \
-                 /usr/local/bin \
-                 $HOME/local/bin \
-                 $HOME/bin \
-                 $HOME/bin/osx \
-                 /opt/local/sbin \
-                 /opt/local/bin
-        do
-            if [ -d "$P" ] ; then PATH="$P:$PATH" ; fi
-        done
         myls='gls'
     elif [ "$OSTYPE" = "cygwin" ]; then
         export TMPDIR="/tmp"
-        export PATH="$HOME/local/bin:$PATH"
         myls='ls'
     elif [ "${OSTYPE:0:5}" = "linux" ]; then
-        export PATH="$HOME/local/bin:$PATH"
         myls='ls'
     fi
 
