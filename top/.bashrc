@@ -30,15 +30,9 @@
 if [ -z "$BASHRC_ONCE" ] ; then
     export BASHRC_ONCE=1
 
-    # When run from Cygwin, Mercurial does not recognize Win32 paths in any of
-    # TMPDIR, TEMP, or TMP.  It passes the first valid Cygwin path to the
-    # editor.  To work with Windows editors, the temporary directory name must
-    # mean the same thing in both Cygwin and Windows environments
-    # (e.g. "c:\tmp" mounted on Cygwin's "/tmp").
-
-    export EDITOR="${EDITOR:-emacsclient}"
-    export ALTERNATE_EDITOR=emacs
-    export P4CONFIG=.p4
+    #export EDITOR="${EDITOR:-emacsclient}"
+    #export ALTERNATE_EDITOR=emacs
+    #export P4CONFIG=.p4
 
     if [ -f /etc/bashrc ]; then
         . /etc/bashrc
@@ -127,9 +121,17 @@ if [ "$OSTYPE" = "cygwin" ]; then
     alias emacs="$EDITOR"
   fi
 elif [ "${OSTYPE:0:6}" = "darwin" ]; then
-    alias emacs='emacs_osx'
+  export EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
+  alias emacs='emacs_osx'
 elif [ "${OSTYPE:0:5}" = "linux" ]; then
+  if [ -n "$SSH_CLIENT" ] ; then
+    if [ "$EDITOR" != "emacsclient" ] ; then
+      export EDITOR=/usr/bin/emacs
+    fi
+    alias emacs="$EDITOR"
+  else
     alias emacs='emacs_linux'
+  fi
 fi
 
 emacs_osx() {
