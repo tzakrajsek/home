@@ -689,7 +689,7 @@ names.  Customize with `cwdtrack-regexp'."
                (equal (getenv "TERM") "xterm-256color")))
   (backspace-is-delete))
 
-(global-set-key "\C-z\C-h" 'backspace-is-delete)
+;;(global-set-key "\C-z\C-h" 'backspace-is-delete)
 
 
 ;; Horizontal scrolling (see toggle-truncate-lines)
