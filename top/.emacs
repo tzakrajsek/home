@@ -1,5 +1,5 @@
 ;; dir of elisp files
-(defvar edir "~/.emacs.d")
+(defvar edir "~/.emacs.d/lisp")
 
 ;; re-compile stale ELC files
 (defun freshen-elc (elc)

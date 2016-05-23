@@ -67,6 +67,7 @@
   (let ((font-assoc (assoc my-host
 			   '(("SEDITION" "luc9")
 			     ("BKELLEY1" "luc7n")
+			     ("grimm" "deja13")
 			     ("u64" "deja11")
 			     ("BKELLEY" "luc8")))))
     (if font-assoc (change-font (cadr font-assoc))))
