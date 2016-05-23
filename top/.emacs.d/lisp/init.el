@@ -660,7 +660,7 @@ names.  Customize with `cwdtrack-regexp'."
   (global-set-key [?\C-=] 'fontsize-up)
   (global-set-key [?\C--] 'fontsize-down))
 
-(global-set-key [deletechar] 'backward-delete-char)  ;; VT100 sequence?
+(global-set-key [deletechar] 'delete-char)  ;; VT100 sequence?
 
 ;; Use C-z for private keymap (more portable than F-keys)
 ;;
