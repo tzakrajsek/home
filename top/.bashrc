@@ -56,12 +56,12 @@ if [ -z "$BASHRC_ONCE" ] ; then
 
     if [ "${OSTYPE:0:6}" = "darwin" ]; then
         export MANPATH="/opt/local/share/man:$MANPATH"
-        myls='gls'
+        export myls='gls'
     elif [ "$OSTYPE" = "cygwin" ]; then
         export TMPDIR="/tmp"
-        myls='ls'
+        export myls='ls'
     elif [ "${OSTYPE:0:5}" = "linux" ]; then
-        myls='ls'
+        export myls='ls'
     fi
 
     # host-specific environment settings
@@ -231,7 +231,7 @@ fi
 # gray:    37       white:         97
 
 export LS_COLORS="di=94:ln=90:so=37:pi=93:ex=97:bd=37:cd=37:su=37:sg=37:tw=92:ow=32:"
-echo "TERM=$TERM";
+#echo "TERM=$TERM";
 
 #if [ $TERM = emacs ]; then
 #    TERM=dumb

@@ -45,6 +45,7 @@
           ("deja11"  "-unknown-DejaVu Sans Mono-normal-normal-normal-*-11-*-*-*-m-0-iso10646-1")
           ("src13"   "-apple-Source_Code_Pro-medium-normal-normal-*-13-*-*-*-m-0-iso10646-1")
           ("src18"   "-apple-Source_Code_Pro-medium-normal-normal-*-18-*-*-*-m-0-iso10646-1")
+          ("hack10"  "-*-Hack-medium-normal-normal-*-10-*-*-*-m-0-iso10646-1")
           ("hack13"  "-*-Hack-medium-normal-normal-*-13-*-*-*-m-0-iso10646-1")
           ("hack18"  "-*-Hack-medium-normal-normal-*-18-*-*-*-m-0-iso10646-1")
           ("menlo13" "-apple-Menlo-medium-normal-normal-*-13-*-*-*-m-0-iso10646-1")
@@ -267,8 +268,9 @@
 ;;;; emacsclient
 ;;  /usr/bin/emacs works with /usr/bin/emacsclient
 ;;  emacsformacosx.com works with its own emacsclient
-(setenv "EDITOR" "emacsclient")
-(server-start)
+
+;;(setenv "EDITOR" "emacsclient")
+;;(server-start)
 
 
 ;; Mac apps run outside of bash or other user environment settings.
@@ -277,7 +279,9 @@
         (PATH (getenv "PATH"))
         (HOME (getenv "HOME")))
 
-    (change-font "hack13")
+    (change-font "hack10")
+    ;;(change-font "hack13")
+    ;;(change-font "luc10")
 
     (setenv "P4CONFIG" ".p4")
 
@@ -302,6 +306,8 @@
     (colorscheme-green-on-black)
   (colorscheme-wheat))
 
+;;(load-theme 'monochrome t)
+(load-theme 'simpledark t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;  Code-related utilities and conveniences  ;;;;;;
@@ -717,6 +723,51 @@ names.  Customize with `cwdtrack-regexp'."
     (delete-trailing-whitespace)))
 
 (add-hook 'before-save-hook 'clean-whitespace)
+
+(when window-system
+  (defun norm-frame ()
+    "Setup frame for my landscape laptop."
+    (interactive)
+    (set-frame-position (selected-frame) 0 0)
+    (set-frame-size (selected-frame) 132 50)
+    )
+
+  (defun wide-frame ()
+    "Setup frame for my landscape monitor at work."
+    (interactive)
+    (set-frame-position (selected-frame) 0 0)
+    (set-frame-size (selected-frame) 230 50)
+    )
+
+  (defun tall-frame ()
+    "Setup frame for my portrait monitor at work."
+    (interactive)
+    (set-frame-size (selected-frame) 132 120)
+    )
+
+  (defun wide-frame-with-shell ()
+    "Setup frame for my landscape monitor at work."
+    (interactive)
+    (wide-frame)
+    (split-window-horizontally)
+    (other-window 1)
+    (shell)  ; this isn't init'd correctly until later
+    (other-window 1)
+    )
+
+  (defun norm-frame-with-shell ()
+    "Setup frame for my landscape monitor at work."
+    (interactive)
+    (norm-frame)
+    (split-window-horizontally)
+    (other-window 1)
+    (shell)  ; this isn't init'd correctly until later
+    ;(other-window 1)
+    )
+
+  (norm-frame)
+  (x-focus-frame nil)
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;  Local definitions  ;;;;;;;;;;;;;;;;;
