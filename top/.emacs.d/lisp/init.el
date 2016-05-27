@@ -13,6 +13,17 @@
 (when (>= emacs-major-version 22)
   (set-variable 'inhibit-splash-screen t))
 
+;(when (>= emacs-major-version 23)
+;    (cua-mode t)
+
+; or, to just use rectangle editing from cua mode...
+(setq cua-enable-cua-keys nil)
+(setq cua-highlight-region-shift-only t) ;; no transient mark mode
+(setq cua-toggle-set-mark nil) ;; original set-mark behavior, i.e. no transient-mark-mode
+(cua-mode)
+
+
+
 ;; Use "emacs -f bigfont" for large font; harmless when not supported.
 (defun bigfont() )
 (defun change-font( &optional key) )
@@ -795,3 +806,48 @@ names.  Customize with `cwdtrack-regexp'."
 ;   (when (fboundp 'window-system)
 ;     (setq erc-autojoin-channels-alist '((".*\\.qualcomm\\.com" "#minkapi"))))
 ;   (erc-tls :server "chat-irc-prod.qualcomm.com" :port "9999" :nick "bhk" :full-name "Brian Kelley"))
+
+
+(add-hook 'comint-output-filter-functions 'ansi-color-process-output nil t)
+
+(add-hook 'comint-output-filter-functions
+    'shell-strip-ctrl-m nil t)
+(add-hook 'comint-output-filter-functions
+    'comint-watch-for-password-prompt nil t)
+;(setq explicit-shell-file-name "bash.exe")
+(setq explicit-shell-file-name "bash")
+;; For subprocesses invoked via the shell
+;; (e.g., "shell -c command")
+(setq shell-file-name explicit-shell-file-name)
+
+
+(add-hook 'shell-mode-hook 'n-shell-mode-hook)
+(defun n-shell-mode-hook ()
+  (local-set-key '[(shift tab)] 'comint-next-matching-input-from-input)
+  (setq comint-input-sender 'n-shell-simple-send)
+  )
+
+(defun n-shell-simple-send (proc command)
+  (cond
+   ;; Checking for clear command and execute it.
+   ((string-match "^[ \t]*clear[ \t]*$" command)
+    (comint-send-string proc "\n")
+    (erase-buffer)
+    )
+   ;; Same for cls.
+   ((string-match "^[ \t]*cls[ \t]*$" command)
+    (comint-send-string proc "\n")
+    (erase-buffer)
+    )
+   ;; Checking for man command and execute it.
+   ((string-match "^[ \t]*man[ \t]*" command)
+    (comint-send-string proc "\n")
+    (setq command (replace-regexp-in-string "^[ \t]*man[ \t]*" "" command))
+    (setq command (replace-regexp-in-string "[ \t]+$" "" command))
+    ;;(message (format "command %s command" command))
+    (funcall 'man command)
+    )
+   ;; Send other commands to the default handler.
+   (t (comint-simple-send proc command))
+   )
+  )

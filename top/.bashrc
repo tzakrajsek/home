@@ -139,7 +139,7 @@ emacs_osx() {
 }
 
 emacs_linux() {
-    (nohup /usr/bin/emacs $@ 1>/dev/null 2>/dev/null &)
+    (nohup /usr/local/bin/emacs $@ 1>/dev/null 2>/dev/null &)
 }
 
 # recycle

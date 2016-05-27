@@ -15,3 +15,4 @@
 
 (load (concat edir "/init"))
 
+(put 'erase-buffer 'disabled nil)
