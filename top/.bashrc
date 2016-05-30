@@ -87,8 +87,8 @@ export DEV=/usr/local/develop
 export WORK=/workspace
 export TOOLS=/workspace/tools
 
-export CCACHE_DIR=/usr/local/develop/ccache
-[[ -f ${CCACHE_DIR}/ccacherc ]] && . ${CCACHE_DIR}/ccacherc
+# export CCACHE_DIR=/usr/local/develop/ccache
+# [[ -f ${CCACHE_DIR}/ccacherc ]] && . ${CCACHE_DIR}/ccacherc
 
 if [ "$OSTYPE" = "cygwin" ]; then
   # Ignore CRs, and make sure this is set for every shell.
