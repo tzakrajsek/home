@@ -112,17 +112,13 @@ fi
 #   PS1='['"$HOSTNAME"'] \w: '
 # fi
 
-if [ "$OSTYPE" = "cygwin" ]; then
-  # Cygwin EDITOR: depends on SSH and emacs shell
-  if [ -n "$SSH_CLIENT" ] ; then
-    if [ "$EDITOR" != "emacsclient" ] ; then
-      export EDITOR=/usr/bin/emacs
+if [ "${OSTYPE:0:6}" = "darwin" ]; then
+    if [ -n "$SSH_CLIENT" ] ; then
+        export EDITOR=vi
+    else
+        export EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
+        alias emacs='emacs_osx'
     fi
-    alias emacs="$EDITOR"
-  fi
-elif [ "${OSTYPE:0:6}" = "darwin" ]; then
-  export EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
-  alias emacs='emacs_osx'
 elif [ "${OSTYPE:0:5}" = "linux" ]; then
   if [ -n "$SSH_CLIENT" ] ; then
     if [ "$EDITOR" != "emacsclient" ] ; then
@@ -135,7 +131,7 @@ elif [ "${OSTYPE:0:5}" = "linux" ]; then
 fi
 
 emacs_osx() {
-    (/Applications/Emacs.app/Contents/MacOS/Emacs "$@" &)
+    (nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" 1>/dev/null 2>/dev/null &)
 }
 
 emacs_linux() {
