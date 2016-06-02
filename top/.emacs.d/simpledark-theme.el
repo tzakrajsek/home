@@ -33,6 +33,9 @@
    `(default ((,class (:foreground ,lgray :background ,black))))
    `(cursor ((,class (:background ,lgray))))
 
+   ;; Dired faces
+   `(dired-directory ((,class (:background unspecified :foreground ,sgray))))
+
    ;; Highlighting faces
    `(fringe ((,class (:foreground ,black :background ,lgray))))
    `(highlight ((,class (:foreground ,black :background ,lgray))))
