@@ -122,7 +122,7 @@ if [ "${OSTYPE:0:6}" = "darwin" ]; then
 elif [ "${OSTYPE:0:5}" = "linux" ]; then
   if [ -n "$SSH_CLIENT" ] ; then
     if [ "$EDITOR" != "emacsclient" ] ; then
-      export EDITOR=/usr/local/bin/emacs
+      export EDITOR=/usr/bin/emacs
     fi
     alias emacs="$EDITOR"
   else

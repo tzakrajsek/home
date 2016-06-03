@@ -794,7 +794,9 @@ names.  Customize with `cwdtrack-regexp'."
     (define-key artist-mode-map [down-mouse-3] 'artist-mouse-choose-operation)))
 
 (add-hook 'artist-mode-init-hook 'my-artist-mode-hook)
+
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 
 ;;(defvar ps-printer-name "\\\\rejectamenta\\ax110amfd")
 ;;(setq printer-name "\\\\rejectamenta\\ax110amfd")
