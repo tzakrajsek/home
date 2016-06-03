@@ -30,9 +30,9 @@
 if [ -z "$BASHRC_ONCE" ] ; then
     export BASHRC_ONCE=1
 
-    #export EDITOR="${EDITOR:-emacsclient}"
-    #export ALTERNATE_EDITOR=emacs
-    #export P4CONFIG=.p4
+    # export EDITOR="${EDITOR:-emacsclient}"
+    # export ALTERNATE_EDITOR=emacs
+    # export P4CONFIG=.p4
 
     if [ -f /etc/bashrc ]; then
         . /etc/bashrc
@@ -122,7 +122,7 @@ if [ "${OSTYPE:0:6}" = "darwin" ]; then
 elif [ "${OSTYPE:0:5}" = "linux" ]; then
   if [ -n "$SSH_CLIENT" ] ; then
     if [ "$EDITOR" != "emacsclient" ] ; then
-      export EDITOR=/usr/bin/emacs
+      export EDITOR=/usr/local/bin/emacs
     fi
     alias emacs="$EDITOR"
   else
@@ -131,11 +131,13 @@ elif [ "${OSTYPE:0:5}" = "linux" ]; then
 fi
 
 emacs_osx() {
-    (nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" 1>/dev/null 2>/dev/null &)
+    { nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" & disown; }  1>/dev/null 2>/dev/null
+    # (nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" 1>/dev/null 2>/dev/null &)
 }
 
 emacs_linux() {
-    (nohup /usr/local/bin/emacs $@ 1>/dev/null 2>/dev/null &)
+    { nohup /usr/local/bin/emacs "$@" & disown; }  1>/dev/null 2>/dev/null
+    # (nohup /usr/local/bin/emacs $@ 1>/dev/null 2>/dev/null &)
 }
 
 # recycle
@@ -787,3 +789,5 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 PERL_MB_OPT="--install_base \"/home/tomz/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/tomz/perl5"; export PERL_MM_OPT;
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
