@@ -25,6 +25,7 @@
       (lgray "light gray")
       (dgray "dark gray")
       (ddgray "#555555")
+      (dddgray "#222222")
       (sgray "light slate gray"))
 
   (custom-theme-set-faces
@@ -37,7 +38,7 @@
    `(dired-directory ((,class (:background unspecified :foreground ,sgray))))
 
    ;; Highlighting faces
-   `(fringe ((,class (:foreground ,black :background ,lgray))))
+   `(fringe ((,class (:foreground ,black :background ,dddgray))))
    `(highlight ((,class (:foreground ,black :background ,lgray))))
    `(region ((,class (:foreground ,black :background ,lgray))))
    `(secondary-selection ((,class (:foreground: ,black :background ,sgray))))

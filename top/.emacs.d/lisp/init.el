@@ -100,6 +100,8 @@
 ;;   pxsize = pixel size, incorporating vertial spacing part of font design
 ;;   spacing = P | M | C   [proportional, monospaced, character cell]
 
+(require 'nlinum)
+;;(global-nlinum-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;       Font-lock       ;;;;;;;;;;;;;;;;
@@ -271,7 +273,6 @@
 ; (version): "GNU Emacs 23.1.1 (i686-pc-linux-gnu, GTK+ Version 2.18.9) of 2010-11-10 on c6b1.bsys.dev.centos.org"
 ;
 ;;;; Linux, in SSH session from Prompt (iPad)  [sends BACKSPACE!]
-
 
 
 ;; git uses less, which does the wrong thing in a dumb terminal
