@@ -42,8 +42,8 @@ if [ -z "$BASHRC_ONCE" ] ; then
     # It's ok to add os specific ones since missing ones are bypassed.
 
     for P in \
-        ~/adt-bundle-mac/sdk/platform-tools \
-        ~/git/depot_tools \
+        /usr/local/develop/adt-bundle/sdk/platform-tools \
+        /usr/local/develop/depot_tools \
         /usr/local/bin \
         $HOME/local/bin \
         $HOME/bin \
@@ -290,7 +290,10 @@ export PROMPT_COMMAND="history -a"
 
 # ==========================================
 
-alias open='kde-open'
+if [ "${OSTYPE:0:5}" = "linux" ]; then
+    alias open='kde-open'
+fi
+
 alias e='emacs'
 alias en='subl -n'
 alias quic='git config user.email "tomz@quicinc.com"'
