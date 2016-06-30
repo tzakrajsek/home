@@ -278,6 +278,16 @@ shopt -s no_empty_cmd_completion  # bash>=2.04 only
 shopt -s cmdhist
 shopt -s extglob    # necessary for programmable completion
 
+case $- in
+  *i*) [[ -f /etc/bash_completion ]] && . /etc/bash_completion ;;
+esac
+
+. ~/bash/git-completion.sh
+
+if [ -f ~/bash/.complete ]; then
+    . ~/bash/.complete
+fi
+
 # Don't put duplicate lines in the history.
 export HISTCONTROL="ignoreboth"
 
