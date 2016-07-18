@@ -30,6 +30,11 @@ hi Todo			term=standout 	ctermbg=Yellow ctermfg=Black guifg=Blue guibg=Yellow
 hi LineNr				ctermfg=DarkGrey
 hi hereDoc	term=underline	ctermfg=Brown		guifg=Magenta
 
+hi IncSearch	guifg=slategrey guibg=khaki
+hi Search	guibg=peru guifg=wheat
+
+hi IncSearch	cterm=NONE ctermfg=yellow ctermbg=green
+hi Search	cterm=NONE ctermfg=grey ctermbg=blue
 
 " Common groups that link to default highlighting.
 " You can specify other highlighting easily.

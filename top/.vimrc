@@ -8,6 +8,8 @@ set nowrap
 syntax on
 set background=dark
 color tomz
+" color desert
+set hls
 
 set guifont=Ubuntu\ Mono\ 10
 set errorformat=%f:%l
