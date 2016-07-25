@@ -6,7 +6,7 @@
 (define top "top")
 
 ;; directories under `top` to be deployed as a directory symlink
-(define linked-dirs ".emacs.d .vim .config/git")
+(define linked-dirs ".emacs.d .vim/colors .config/git")
 
 ;;----------------  Utilities  ----------------
 

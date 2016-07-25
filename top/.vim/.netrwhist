@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/usr/local/develop/mytools/docs/.crank/release'
-let g:netrw_dirhist_2='/usr/local/develop/swe-docs/quic'
-let g:netrw_dirhist_3='/usr/local/develop/devtools/symbol-store/.idea'
-let g:netrw_dirhist_4='/usr/local/develop/devtools/sweconfig/gclients/master'
-let g:netrw_dirhist_5='/usr/local/develop/devtools/sweconfig'
-let g:netrw_dirhist_6='/Users/tomz/.emacs.d'
-let g:netrw_dirhist_7='/usr/local/develop/devtools/temp/gclients/2125'
