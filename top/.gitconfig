@@ -1,6 +1,6 @@
 [user]
     name = Tom Zakrajsek
-	email = tomz@codeaurora.org
+    email = tomz@codeaurora.org
 
 [color]
     diff = auto
@@ -8,6 +8,13 @@
     branch = auto
     interactive = auto
     ui = auto
+
+[color "decorate"]
+  branch = white
+  remoteBranch = blue bold
+  tag = green bold
+  stash = green
+  HEAD = green
 
 [core]
     excludesfile = /home/tomz/.gitignore_global
@@ -20,8 +27,9 @@
     co = checkout
     ci = commit
     br = branch
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    lol = log --oneline --graph --decorate
+    lgo = log
+    hist = log --pretty=format:\"%ad %C(blue bold)%h%C(reset) | %s%d [%C(blue bold)%ae%Creset]\" --graph --date=short --abbrev=9 --decorate
+    lol = log --oneline --graph --decorate --abbrev=9
     st = status -uno
     last = log -1 HEAD
 

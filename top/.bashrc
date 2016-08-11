@@ -404,6 +404,9 @@ alias map14='mkdir -p $DEV/wb14 && sshfs tomz@webtech-bld-14:/local/mnt/workspac
 alias map15='mkdir -p $DEV/wb15 && sshfs tomz@webtech-bld-15:/local/mnt/workspace/webtech/users/tomz $DEV/wb15'
 alias map16='mkdir -p $DEV/wb16 && sshfs tomz@webtech-bld-16:/local/mnt/workspace/webtech/users/tomz $DEV/wb16'
 
+alias mapnet='sshfs webtech-bld-02.qualcomm.com:/net/ /net -o compression=no -o Ciphers=arcfour -o allow_other; sshfs webtech-bld-02.qualcomm.com:/prj/ /prj -o compression=no -o Ciphers=arcfour -o allow_other'
+alias unmapnet='sudo umount /net; sudo umount /prj'
+
 function bitly() {
     curl -X GET "https://api-ssl.bitly.com/v3/shorten?access_token=1b3fab542611dd31d4f0dcdc9c6e9ddb059d8ccd&longUrl=$1&format=txt"
 }
