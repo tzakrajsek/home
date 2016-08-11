@@ -498,7 +498,7 @@ alias celar='clear'
 
 
 function stamp {
-    stamp_usage() { echo "stamp: [-r -v -d -m msg]" 1>&2; return; }
+    stamp_usage() { echo "stamp: [-r -v -d -s -m msg]" 1>&2; return; }
 
     local OPTIND o m
     local msg review verified developer_verified submit
