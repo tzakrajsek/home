@@ -130,6 +130,8 @@ elif [ "${OSTYPE:0:5}" = "linux" ]; then
   fi
 fi
 
+export EDITOR=vi  # override: for now, always use VI
+
 emacs_osx() {
     { nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" & disown; }  1>/dev/null 2>/dev/null
     # (nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" 1>/dev/null 2>/dev/null &)
@@ -495,6 +497,11 @@ else
 fi
 alias cls='clear'
 alias celar='clear'
+
+
+function nr { # next-resolve
+    export current=$(git status -s | grep UU | sed -e "s/^UU //g;" | tail -1) && echo "$(git status -s | grep UU | sed -e 's/^UU //g;' | wc -l) remaining conflicts"
+}
 
 
 function stamp {

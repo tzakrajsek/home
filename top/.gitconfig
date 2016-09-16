@@ -10,11 +10,11 @@
     ui = auto
 
 [color "decorate"]
-  branch = white
-  remoteBranch = blue bold
-  tag = green bold
-  stash = green
-  HEAD = green
+    branch = white
+    remoteBranch = blue bold
+    tag = green bold
+    stash = green
+    HEAD = green
 
 [core]
     excludesfile = /home/tomz/.gitignore_global
@@ -28,13 +28,16 @@
     ci = commit
     br = branch
     lgo = log
-    hist = log --pretty=format:\"%ad %C(blue bold)%h%C(reset) | %s%d [%C(blue bold)%ae%Creset]\" --graph --date=short --abbrev=9 --decorate
+    hist = log --pretty=format:\"%cd %C(blue bold)%h%C(reset) | %s%d [%C(blue bold)%ae%Creset]\" --graph --date=short-local --abbrev=9 --decorate
     lol = log --oneline --graph --decorate --abbrev=9
     st = status -uno
     last = log -1 HEAD
 
 [diff]
     ignoreSubmodules = all
+    renamelimit = 5000
 
 [push]
     default = simple
+[merge]
+    renamelimit = 5000
