@@ -32,6 +32,7 @@
     lol = log --oneline --graph --decorate --abbrev=9
     st = status -uno
     last = log -1 HEAD
+    cp = cherry-pick -x
 
 [diff]
     ignoreSubmodules = all
@@ -39,5 +40,9 @@
 
 [push]
     default = simple
+
 [merge]
     renamelimit = 5000
+
+[gc]
+    auto=1

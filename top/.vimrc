@@ -8,8 +8,7 @@ set incsearch
 set ve=all
 
 " [tomz] pathogen is a package manager for vim despite the scary api
-"execute pathogen#infect()
-"filetype plugin indent on
+execute pathogen#infect()
 
 syntax on
 set background=dark

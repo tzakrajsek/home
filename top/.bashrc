@@ -454,10 +454,14 @@ __cd_completer() {
 #   swe -> $DEV/swe
 
 alias ..='goto ..'
-#_..() { __cd_completer ..; }
-#complete -o nospace -F _.. ..
+alias ...='goto ../..'
+alias ....='goto ../../..'
 _upcompleter() { __cd_completer ..; }
+_up2completer() { __cd_completer ../..; }
+_up3completer() { __cd_completer ../../..; }
 complete -o nospace -F _upcompleter ..
+complete -o nospace -F _up2completer ...
+complete -o nospace -F _up3completer ....
 
 alias work='goto $WORK'
 _work() { __cd_completer $WORK; }
@@ -475,19 +479,28 @@ complete -o nospace -F _dev dev
 # _swe() { __cd_completer $DEV/swe; }
 # complete -o nospace -F _swe swe
 
-alias m46='goto $WORK/builds/m46'
-_m46() { __cd_completer $WORK/builds/m46; }
-complete -o nospace -F _m46 m46
+alias master='goto $WORK/builds/master'
+_master() { __cd_completer $WORK/builds/master; }
+complete -o nospace -F _master master
 
-alias m42='goto $WORK/builds/m42'
-_m42() { __cd_completer $WORK/builds/m42; }
-complete -o nospace -F _m42 m42
+alias m54='goto $WORK/builds/m54'
+_m54() { __cd_completer $WORK/builds/m54; }
+complete -o nospace -F _m54 m54
+
+alias m53='goto $WORK/builds/m53'
+_m53() { __cd_completer $WORK/builds/m53; }
+complete -o nospace -F _m53 m53
+
+alias m52='goto $WORK/builds/m52'
+_m52() { __cd_completer $WORK/builds/m52; }
+complete -o nospace -F _m52 m52
+
+alias builds='goto $WORK/builds'
+_builds() { __cd_completer $WORK/builds; }
+complete -o nospace -F _builds builds
+
 
 KSP_DIR="$HOME/.steam/steam/SteamApps/common/Kerbal Space Program"
-
-alias ksp='cd "$KSP_DIR"'
-#_ksp() { __cd_completer $KSP_DIR; }
-#complete -o nospace -F _ksp ksp
 
 if [ $TERM == 'xterm' ]
 then
@@ -776,7 +789,7 @@ function tmacs()
     /usr/bin/emacs $@
 }
 
-function builds() {
+function qctbuilds() {
     local bld
     for pattern in "$@"; do
         bld="$bld*$pattern"
