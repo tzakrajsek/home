@@ -299,12 +299,18 @@ export HISTIGNORE="[   ]*:&:bg:fg:exit"
 # Whenever displaying the prompt, write the previous line to disk
 export PROMPT_COMMAND="history -a"
 
+export P4PORT=qctp401:1666
+export P4USER=tomz
+export P4MERGE=p4merge
 
 # ==========================================
 
 if [ "${OSTYPE:0:5}" = "linux" ]; then
     alias open='kde-open'
 fi
+
+alias activate='source activate'
+alias deactivate='source deactivate'
 
 alias e='emacs'
 alias en='subl -n'
