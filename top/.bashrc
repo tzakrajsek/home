@@ -374,6 +374,7 @@ alias pubmd='grip --wide --export --gfm'
 
 alias xssh='ssh -X'
 alias grimm='ssh grimm.qualcomm.com'
+alias harv='ssh tomz-ubuntu.qualcomm.com'
 
 alias cip1='ssh webtech-ci-p1.qualcomm.com'
 alias cip2='ssh webtech-ci-p2.qualcomm.com'
