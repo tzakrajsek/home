@@ -657,6 +657,14 @@ function setjava() {
     sudo update-alternatives --auto javap
 }
 
+function prism() {
+    open https://prism/CR/$1
+}
+
+function crb() {
+    open https://crbrowser.qualcomm.com/p/crbrowser?$1
+}
+
 function show-caf() {
     open https://www.codeaurora.org/cgit/quic/chrome4sdp/chromium/src/commit/?id=$1
 }
