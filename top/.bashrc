@@ -49,7 +49,8 @@ if [ -z "$BASHRC_ONCE" ] ; then
         $HOME/bin \
         $HOME/bin/osx \
         /opt/local/sbin \
-        /opt/local/bin
+        /opt/local/bin \
+        /opt/local/libexec/gnubin
     do
         if [ -d "$P" ] ; then PATH="$P:$PATH" ; fi
     done
