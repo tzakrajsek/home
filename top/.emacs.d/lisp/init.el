@@ -100,6 +100,7 @@
 ;;   pxsize = pixel size, incorporating vertial spacing part of font design
 ;;   spacing = P | M | C   [proportional, monospaced, character cell]
 
+(require 'smark)
 (require 'nlinum)
 ;;(global-nlinum-mode)
 

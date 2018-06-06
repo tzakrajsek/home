@@ -17,7 +17,7 @@ RUNEMACS = $(EMACSPRE) $(EMACS) -batch -eval '(push "$(CURDIR)" load-path)'
 ##############################
 
 
-ELISPS = fontsize.el tree.el p4utils.el init.el lua-mode.el js2.el
+ELISPS = fontsize.el tree.el p4utils.el init.el lua-mode.el js2.el smark.el
 QTESTS = tree_q.el
 
 

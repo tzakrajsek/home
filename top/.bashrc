@@ -34,16 +34,17 @@ if [ -z "$BASHRC_ONCE" ] ; then
     # export ALTERNATE_EDITOR=emacs
     # export P4CONFIG=.p4
 
-    if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
-    fi
+    #if [ -f /etc/bashrc ]; then
+    #    . /etc/bashrc
+    #fi
 
     # Conditionally add directories to path
     # It's ok to add os specific ones since missing ones are bypassed.
 
     for P in \
         /usr/local/develop/adt-bundle/sdk/platform-tools \
-        /usr/local/develop/depot_tools \
+        /usr/local/develop/lua/LuaDist/bin \
+        /Applications/CMake.app/Contents/bin \
         /usr/local/bin \
         $HOME/local/bin \
         $HOME/bin \
@@ -85,8 +86,8 @@ export GREP_COLOR='1;32'
 # Might turn out to be machine specific?
 
 export DEV=/usr/local/develop
-export WORK=/workspace
-export TOOLS=/workspace/tools
+export WORK=/work
+export TOOLS=/work/tools
 
 # export CCACHE_DIR=/usr/local/develop/ccache
 # [[ -f ${CCACHE_DIR}/ccacherc ]] && . ${CCACHE_DIR}/ccacherc
@@ -133,8 +134,11 @@ fi
 
 export EDITOR=vi  # override: for now, always use VI
 
+export PYTHONPATH=/usr/local/develop/ssg-automation:$PYTHONPATH
+
 emacs_osx() {
-    { nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" & disown; }  1>/dev/null 2>/dev/null
+    open -a /Applications/Emacs.app/Contents/MacOS/Emacs "$@"
+    #{ nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" & disown; }  1>/dev/null 2>/dev/null
     # (nohup /Applications/Emacs.app/Contents/MacOS/Emacs "$@" 1>/dev/null 2>/dev/null &)
 }
 
@@ -217,9 +221,9 @@ cds() {
 alias luai="lua -l ix -i"
 
 # MacPorts location of git:
-if [ "$EMACS" != "t" -a -f /usr/local/git/contrib/completion/git-completion.bash ]; then
-  . /usr/local/git/contrib/completion/git-completion.bash
-fi
+#if [ "$EMACS" != "t" -a -f /usr/local/git/contrib/completion/git-completion.bash ]; then
+#  . /usr/local/git/contrib/completion/git-completion.bash
+#fi
 
 
 # black:   30       dark gray:     90
@@ -315,6 +319,7 @@ alias deactivate='source deactivate'
 
 alias e='emacs'
 alias en='subl -n'
+alias qti='git config user.email "tomz@qti.qualcomm.com"'
 alias quic='git config user.email "tomz@quicinc.com"'
 alias caf='git config user.email "tomz@codeaurora.org"'
 alias gitwho='git config --get user.email'
@@ -581,6 +586,18 @@ function showgroups() {
     fi
 }
 
+function manage() {
+    if [ $# -eq 0 ]
+    then
+        echo "try manage core.tz.1.0 (or another package warehouse)"
+    else
+        for param in $@
+        do
+            open "https://pw.qualcomm.com/index.php?p=sysadmin&a=manage_warehouse&pwname=$param"
+        done
+    fi
+}
+
 function pph() {
     if [ $# -eq 0 ]
     then
@@ -824,7 +841,9 @@ fi
 gitprompt
 
 # Enable bash completion for the swe command
-eval "$(register-python-argcomplete swe)"
+# TODO: why doesn't this work in emacs shell?
+#eval "$(register-python-argcomplete swe)"
+#eval "$(register-python-argcomplete task)"
 
 #if [ $EMACS ]; then
 #  # Emit the PWD in the prompt, taking care that it doesn't
@@ -842,4 +861,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 PERL_MB_OPT="--install_base \"/home/tomz/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/tomz/perl5"; export PERL_MM_OPT;
 
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+#test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
