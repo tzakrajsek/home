@@ -51,7 +51,7 @@
 
   (defun dark ()
     (interactive)
-    (customize-set-variable 'custom-enabled-themes '(dark)))
+    (customize-set-variable 'custom-enabled-themes '(simpledark)))
 
   (defun light ()
     (interactive)
