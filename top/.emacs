@@ -20,10 +20,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (dark)))
+ '(custom-enabled-themes (quote (simpledark)))
  '(custom-safe-themes
    (quote
-    ("a95fc0516c80b09f50d4f34179185b92c8368f8ed3b2089b21a0dc1ab3f13392" "05225f9a0dd77096dc2bde4ad721ea4a901fde0a9a00afeba7dc874ca1413396" "8e07bb364a54330ace86aa39c991abbbb31c16c2f865bdc5ae4c872fa1ae8acc" "b19ec98ce8db0e3a9e2660be0b9d4eeb335173fbf4bfc864824edeec327eacf5" default)))
+    ("d48451e0c9eeb3a263d1d52729db2a64746cba33006bf640c4301d823e8f551d" "a95fc0516c80b09f50d4f34179185b92c8368f8ed3b2089b21a0dc1ab3f13392" "05225f9a0dd77096dc2bde4ad721ea4a901fde0a9a00afeba7dc874ca1413396" "8e07bb364a54330ace86aa39c991abbbb31c16c2f865bdc5ae4c872fa1ae8acc" "b19ec98ce8db0e3a9e2660be0b9d4eeb335173fbf4bfc864824edeec327eacf5" default)))
  '(fill-column 76)
  '(indent-tabs-mode nil)
  '(ps-landscape-mode t)
@@ -34,5 +34,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;'(default ((t (:height 140 :family "Source Code Pro")))))
- '(default ((t (:height 140 :family "Andale Mono")))))
+ ;'(default ((t (:height 140 :family "Andale Mono")))))
+ '(default ((t (:height 140 :family "Source Code Pro")))))

@@ -580,6 +580,17 @@ names.  Customize with `cwdtrack-regexp'."
 (global-set-key "\M--" (lambda () (interactive) (my-zoom-frame -1)))
 (global-set-key "\M-0" (lambda () (interactive) (my-zoom-frame 0)))
 
+
+(defun my-clear ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+
+(defun my-shell-hook ()
+  (local-set-key "\C-cl" 'my-clear))
+
+(add-hook 'shell-mode-hook 'my-shell-hook)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Local definitions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
