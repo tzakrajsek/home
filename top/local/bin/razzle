@@ -48,11 +48,20 @@ shopt -s extglob    # necessary for programmable completion
 
 . ~/bash/git-completion.sh
 
+export PATH="/usr/local/develop/anaconda/envs/v2/bin:$PATH"
+
 # Don't put duplicate lines in the history.
 export HISTCONTROL="ignoreboth"
 
 # Ignore some controlling instructions
 export HISTIGNORE="[   ]*:&:bg:fg:exit"
+
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo " ("${ref#refs/heads/}")"
+}
+
+PS1="\w\$(parse_git_branch)] "
 
 # Whenever displaying the prompt, write the previous line to disk
 export PROMPT_COMMAND="history -a"
@@ -80,9 +89,11 @@ alias pjet='enscript -h -G -fCourier9 -d $LPDEST'  # Pretty-print using enscript
 alias background='xv -root -quit -max -rmode 5'    # Put a picture in the background
 
 # Some shortcuts for different directory listings
-alias ll='ls -B -l'                                # long list
-alias la='ls -B -Al'                               # all but . and ..
-alias dir='ls -B -Al'              # show hidden files, long format
+alias ls='ls -F --color --group-directories-first'
+alias ll='ls -B -lh'                                # long list
+alias la='ls -B -Alh'                               # all but . and ..
+alias dir='ls -B -lh'
+alias lsx='find . -maxdepth 1 -perm -111 -type f | xargs ls -F --color -BAlh'
 
 alias mkdir='mkdir -p'
 alias md='mkdir -p'
@@ -455,11 +466,45 @@ function qctbuilds() {
     ls -d --indicator-style=none //qcdfs/qct/builds-sd/builds/test/*/*$bld* 2>&1 | grep -v "No such file or directory" | grep "/"
 }
 
-if [ -f ~/bash/.func ]; then
-    . ~/bash/.func
-fi
 
-gitprompt
+
+function attest_all() {
+    if [ $# -eq 1 ]
+    then
+        ssh tomz-ubuntu attest_all $1
+    elif [ $# -eq 2 ]
+    then
+        ssh tomz-ubuntu attest_all $1 $2
+    else
+        echo "Provide a build ID and optionally an mbn name"
+    fi
+}
+
+function attest() {
+    if [ $# -eq 1 ]
+    then
+        ssh tomz-ubuntu attest $1
+    elif [ $# -eq 2 ]
+    then
+        ssh tomz-ubuntu attest $1 $2
+    else
+        echo "Provide a build ID and optionally an mbn name"
+    fi
+}
+
+function attest_time() {
+    if [ $# -eq 1 ]
+    then
+        ssh tomz-ubuntu attest_time $1
+    elif [ $# -eq 2 ]
+    then
+        ssh tomz-ubuntu attest_time $1 $2
+    else
+        echo "Provide a build ID and optionally an mbn name"
+    fi
+}
+
+
 
 # Enable bash completion for the swe command
 #eval "$(register-python-argcomplete swe)"
