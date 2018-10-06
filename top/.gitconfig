@@ -1,5 +1,6 @@
 [user]
 	name = Tom Zakrajsek
+        email = tzakrajsek@gmail.com
 	useConfigOnly = true
 [color]
 	ui = auto
