@@ -126,3 +126,6 @@ cds() {
 
 # host-specific interactive settings
 [[ -r ~/.bashrc-local-i ]] && . ~/.bashrc-local-i
+
+[[ -r ~/local/bin/razzle ]] && . ~/local/bin/razzle
+
