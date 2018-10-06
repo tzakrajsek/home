@@ -46,7 +46,7 @@ shopt -s no_empty_cmd_completion  # bash>=2.04 only
 shopt -s cmdhist
 shopt -s extglob    # necessary for programmable completion
 
-. ~/bash/git-completion.sh
+. ~/git-completion.sh
 
 export PATH="/usr/local/develop/anaconda/envs/v2/bin:$PATH"
 

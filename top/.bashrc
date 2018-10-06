@@ -16,6 +16,7 @@ if [[ -z "$BASHRC_ONCE" ]] ; then
     export P4CONFIG=.p4
     if [[ "${OSTYPE:0:6}" = darwin ]]; then
         PATH="/usr/local/bin:$PATH"  # MacPorts
+        PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"  # Homebrew GNU utils
     fi
     PATH="$HOME/local/bin:$PATH"
 
