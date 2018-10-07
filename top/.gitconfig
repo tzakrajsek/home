@@ -1,6 +1,6 @@
 [user]
 	name = Tom Zakrajsek
-        email = tzakrajsek@gmail.com
+	email = tzakrajsek@gmail.com
 	useConfigOnly = true
 [color]
 	ui = auto
@@ -18,3 +18,8 @@
 
 [branch]
 	autosetuprebase = always
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
