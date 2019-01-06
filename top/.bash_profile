@@ -1,11 +1,9 @@
 # .bash_profile : See .bashrc for details.
 
-. ~/.bashrc
-
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-
 export PATH="$HOME/.cargo/bin:$PATH"
+
 # added by Anaconda3 5.3.0 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -22,3 +20,6 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+source ~/.bashrc
+

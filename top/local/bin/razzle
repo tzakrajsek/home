@@ -79,7 +79,7 @@ alias changeid='scp -P 29418 review-webtech.quicinc.com:hooks/commit-msg .git/ho
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
+alias emacs='open -a /Applications/Emacs.app $@'
 alias igrep='grep -i'
 alias pwd='pwd -P'  # "resolve" symbolic links
 alias whence='type -a'                          # where, of a sort
@@ -508,6 +508,8 @@ function attest_time() {
 
 # Enable bash completion for the swe command
 #eval "$(register-python-argcomplete swe)"
+
+eval "$(register-python-argcomplete task)"
 
 #if [ $EMACS ]; then
 #  # Emit the PWD in the prompt, taking care that it doesn't
