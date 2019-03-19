@@ -32,3 +32,5 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # added by Anaconda2 4.2.0 installer
 export PATH="/usr/local/develop/anaconda/bin:$PATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
